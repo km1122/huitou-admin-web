@@ -1,0 +1,20 @@
+{
+  "code": 200,
+  "data": [
+    {
+      "appId": "wxaaasss",
+      "name": "李宁官方旗舰店",
+      "loginStatus": "已登陆",
+      "loginTime": "2025-08-10 15:40",
+      "loginUser": "km"
+    },
+    {
+      "appId": "wxbbbb",
+      "name": "安踏官方旗舰店",
+      "loginStatus": "登陆失效",
+      "loginTime": "2025-08-10 15:40",
+      "loginUser": "km"
+    }
+  ],
+  "msg": "成功"
+}
