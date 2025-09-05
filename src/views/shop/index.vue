@@ -78,9 +78,14 @@ const generateQR = async () => {
       expire: 300 // 5分钟过期
     });*/
     let response = loginQrCode;
-    qrImage.value = `data:image/png;base64,${response.qrcodeImg}`;
+    if (response.code != 200) {
+      ElMessage.success("二维码生成失败");
+      generating.value = false;
+      return;
+    }
+    qrImage.value = `data:image/png;base64,${response.data.base64Image}`;
     showQRDialog.value = true;
-    qrTicket.value = response.qrTicket;
+    qrTicket.value = response.data.ticket;
   } catch (error) {
     ElMessage.error("二维码生成失败");
   } finally {
