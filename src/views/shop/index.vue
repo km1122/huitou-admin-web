@@ -45,8 +45,8 @@ import { CirclePlus, Refresh } from "@element-plus/icons-vue";
 import authShopList from "@/assets/json/authShopList.json";
 import ProTable from "@/components/ProTable/index.vue";
 import { ElMessage } from "element-plus";
-import loginQrCode from "@/assets/json/getLoginQrCode.json";
 import checkLoginQrCode from "@/assets/json/checkLoginQrCode.json";
+import http from "@/api";
 
 const proTable = ref();
 
@@ -73,11 +73,11 @@ const generateQR = async () => {
     generating.value = true;
     //const { data } = await axios.get("/api/qrcode");
     // 调用后端接口
-    /*let response = await axios.post("/api/qrcode", {
-      scene: "login",
-      expire: 300 // 5分钟过期
-    });*/
-    let response = loginQrCode;
+    const response = http.get("api/huitou/user/getQrCode", {
+      params: {
+        sessionId: "c6127668-eac9-4e2c-86ab-44de657a142f"
+      }
+    });
     if (response.code != 200) {
       ElMessage.success("二维码生成失败");
       generating.value = false;
@@ -87,6 +87,7 @@ const generateQR = async () => {
     showQRDialog.value = true;
     qrTicket.value = response.data.ticket;
   } catch (error) {
+    console.log(error);
     ElMessage.error("二维码生成失败");
   } finally {
     generating.value = false;
