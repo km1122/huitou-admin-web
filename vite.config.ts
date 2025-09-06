@@ -39,6 +39,7 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
     },
     server: {
       host: "0.0.0.0",
+      allowedHosts: ["huitou88.shop"],
       port: viteEnv.VITE_PORT,
       open: viteEnv.VITE_OPEN,
       cors: true,
